@@ -1,0 +1,55 @@
+https://docs.microsoft.com/en-us/learn/modules/copy-blobs-from-command-line-and-code/2-choosing-a-tool-and-strategy
+
+Azure CLI
+The Azure CLI provides access to Azure Storage through the az storage series of commands.
+You transfer blobs between containers and storage accounts using the az storage blob copy command.
+Unlike the upload and download operations, this command runs asynchronously and uses the Azure Storage service to manage the copy process. 
+
+AzCopy
+The AzCopy utility was written specifically for transferring data into, out of, and between Azure Storage accounts.
+
+1Q. You want to quickly upload the data in a collection of small files held in a local folder to blob storage. This is a one-off request.
+You don't want to overwrite blobs that have been modified in the last two days. Which tool should you use?
+Azure CLI
+
+2Q. You want to transfer a series of large files to blob storage. It may take several hours to upload each file, and you're concerned that 
+if a transfer fails it shouldn't have to restart from the beginning. Which tool is the most appropriate to do this task?
+AzCopy
+
+3Q. You want to move a set of blobs in Azure storage from one storage account to another. You want to organize the blobs in the 
+destination account in different folders, according to the month in which each blob was last updated. You'll be performing 
+this task at regular intervals. Which tool should you use?
+The .net client storage library
+
+
+https://www.youtube.com/watch?v=iqNzUxzZwjQ
+To copy from local to azure 
+To COPY from container to another container using az
+To copy from azure to local system
+
+
+step 1 : download microsoft azure azcopy:
+https://docs.microsoft.com/en-us/previous-versions/azure/storage/storage-use-azcopy
+
+GOTO PC--->Program files----> Microsoft SDK's--->Azure---> Azcopy
+Open powershell in admin mode and change path to Azcopy 
+PS C:\Program Files (*86)\Microsoft SDKs\Azure\AzCopy>
+Command To change directory C:\> CD '.\Program Files(*86)\'
+
+Note: No space After Source: Dest: Destkey:
+TASK: To copy from local to azure 
+COMMAND: 
+.\AzCopy.exe /Source:Copy url from local system /Dest:Copy container url from container properties /Destkey:GOTO storage account --->
+access keys-->copykey
+RUN the Command......
+
+TASK2: To copy blobs from one storage account to another storage account 
+.\AzCopy.exe /Source: Copy source url /Dest: copy dest url /Sourcekey: Goto Accesskey copy key /Destkey: goto dest accesskey copy key /s
+
+TASK 3: To copy files from azure to local system
+Create folder in local
+Command:
+.\AzCopy.exe /Source:Copy local system url /Dest:Copy container url /Sourcekey:Copy container key in access keys /s
+
+
+
