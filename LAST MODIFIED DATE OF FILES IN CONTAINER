@@ -1,0 +1,10 @@
+$T = (Get-AzStorageAccount -ResourceGroupName mahi -Name bmw34).Context
+
+New-AzstorageContainer -Name kumar -Permission Container -Context $T
+
+Get-ChildItem -File | Set-AzStorageBlobContent -Container "kumar" -Context $T
+
+$P = Get-AzStorageBlob -Container "kumar" -Context $T
+
+$P | Where-Object{ $_.LastModified -ge "2020-01-29" -and $_.LastModified -le "2020-01-30" } | select-Object Name, LastModified
+
